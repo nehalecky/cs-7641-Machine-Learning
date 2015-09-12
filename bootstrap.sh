@@ -1,13 +1,26 @@
 #!/bin/bash
 set -e
 
-# 0. Update system
+# 0. Set parameters
+## 0.1 Environment name and dependencies
+conda_env_name='cs-CS7641-machine-learning'
+dependencies='numpy scipy pandas scikit-learn seaborn pip ipython Jupyter'
+
+# 0.2 Specify Miniconda version
+# remote repo: https://repo.continuum.io/miniconda/
+# Filename: Miniconda-3.16.0-Linux-x86_64.sh
+# NOTE: most recent version: Miniconda-latest-Linux-x86_64.sh"
+miniconda_version='3.16.0'
+miniconda="Miniconda-$miniconda_version-Linux-x86_64.sh"
+expectedHash="87620e37caf523325ae67889656bc987"
+
+# 1. Update system
 sudo apt-get update
-#Install other dependencies (not sure yet as to why these won't resolve)
+#Install other dependencies (those that won't resolve)
 #sudo apt-get install -y libsm6 libxrender1 libfontconfig1
 
-# 1. Setup Miniconda Install
-## 1.1 Define Miniconda install directory
+# 2. Setup Miniconda Install
+## 2.1 Define Miniconda install directory
 echo "Working direcotry: $PWD"
 if [ $# -eq 0 ]
     then
@@ -19,10 +32,7 @@ else
     proj_dir=$1
 fi
 
-## 1.2 Setup miniconda
-miniconda_version='3.10.1'
-miniconda="Miniconda-$miniconda_version-Linux-x86_64.sh"
-#NOTE: most recent version: Miniconda-latest-Linux-x86_64.sh"
+## 2.2 Setup miniconda
 cd $proj_dir
 PATH_INSTALL_BIN_DIR="$proj_dir/vm/shared/bin"
 PATH_CONDA_SCRIPT="$PATH_INSTALL_BIN_DIR/$miniconda"
@@ -38,16 +48,15 @@ else
   chmod 755 $PATH_CONDA_SCRIPT
 fi
 
-# 1.3 #md5sum hash check of miniconda installer
-expectedHash="8eedd8fc03262c9529b47e6d6cdbd5d4"
+# 2.3 #md5sum hash check of miniconda installer
 md5Output=$(md5sum $PATH_CONDA_SCRIPT | awk '{print $1}')
 if [ "$expectedHash" != "$md5Output" ]; then
     echo "Unexpected md5sum $md5Output for $miniconda"
     exit 1
 fi
 
-# 2. Install of Miniconda
-## 2.1 Via bootstrap
+# 3. Install of Miniconda
+## 3.1 Via bootstrap
 PATH_CONDA="$proj_dir/miniconda-$miniconda_version"
 if [[ ! -d $PATH_CONDA ]]; then
     #blow away old symlink / default miniconda install
@@ -63,7 +72,7 @@ else
     echo "Existing directory at path: $PATH_CONDA, skipping install!"
 fi
 
-# 2.2 Update PATH and conda...
+# 3.2 Update PATH and conda...
 echo "Setting environment variables..."
 PATH_CONDA_BIN="$PATH_CONDA/bin"
 export PATH="$PATH_CONDA_BIN:$PATH"
@@ -79,15 +88,7 @@ conda update -q conda
 # Useful for debugging any issues with conda
 conda info -a
 
-# 3. Install dependencies
-conda_env_name='cs-6476-computer-vision'
-echo "Installing dependencies for OpenCV..."
-dependencies='numpy scipy pandas sklearn seaborn pip ipython Jupyter'
-conda create -q -n $conda_env_name $dependencies || true
-echo "Activating $conda_env_name environment..."
-source activate $conda_env_name
-
-# 4. Update .bashrc profile to source activate the conda environment
+# 3.3 Update .bashrc profile to source activate the conda environment
 # at shell start.
 if grep -ir "PATH_CONDA_BIN=" /$HOME/.bashrc
     then
@@ -98,8 +99,15 @@ else
     sudo echo 'export PATH=$PATH:$PATH_CONDA_BIN'       >> $HOME/.bashrc
     sudo echo "source activate $conda_env_name"         >> $HOME/.bashrc
 fi
-
 echo "Updated PATH: $PATH"
+
+
+# 4. Install dependencies via conda
+echo "Installing dependencies for $conda_env_name..."
+echo "Installing set dependencies: $dependencies"
+conda create -q -n $conda_env_name $dependencies || true
+echo "Activating $conda_env_name environment..."
+source activate $conda_env_name
 
 
 # Install unittest dependencies
