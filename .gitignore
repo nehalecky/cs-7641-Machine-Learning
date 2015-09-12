@@ -1,3 +1,5 @@
+### Binaries
+*.pdf
 ### Vagrant template
 .vagrant/
 ### MicrosoftOffice template
