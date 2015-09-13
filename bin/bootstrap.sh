@@ -3,7 +3,7 @@ set -e
 
 # 0. Set parameters
 ## 0.1 Environment name and dependencies
-conda_env_name='cs-CS7641-machine-learning'
+conda_env_name='cs-7641-machine-learning'
 dependencies='numpy scipy pandas scikit-learn seaborn bokeh pip ipython Jupyter'
 
 # 0.2 Specify Miniconda version

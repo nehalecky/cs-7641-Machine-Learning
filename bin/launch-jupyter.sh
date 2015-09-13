@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-conda_env_name='cs-CS7641-machine-learning'
+conda_env_name='cs-7641-machine-learning'
 port='8009'
 ip='0.0.0.0'
 
