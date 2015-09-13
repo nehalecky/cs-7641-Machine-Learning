@@ -32,6 +32,4 @@ All analysis contained in this repo can be reproduced with use of the VM. First,
 > vagrant up
 > ./bin/launch-jupyter.sh
 ```
-Then navigate to the Jupyter session at: http://localhost:8009/
-
-Godspeed! 
+Then navigate to the [VM-hosted Jupyter session](http://localhost:8009/)—Godspeed! 
