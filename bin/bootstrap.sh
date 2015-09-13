@@ -4,7 +4,7 @@ set -e
 # 0. Set parameters
 ## 0.1 Environment name and dependencies
 conda_env_name='cs-CS7641-machine-learning'
-dependencies='numpy scipy pandas scikit-learn seaborn pip ipython Jupyter'
+dependencies='numpy scipy pandas scikit-learn seaborn bokeh pip ipython Jupyter'
 
 # 0.2 Specify Miniconda version
 # remote repo: https://repo.continuum.io/miniconda/
@@ -102,13 +102,24 @@ fi
 echo "Updated PATH: $PATH"
 
 
-# 4. Install dependencies via conda
-echo "Installing dependencies for $conda_env_name..."
-echo "Installing set dependencies: $dependencies"
-conda create -q -n $conda_env_name $dependencies || true
+
+# 4. Install conda and dependencies via conda
+echo "Echoing the active conda environment name: $conda_env_name"
+if conda info --envs | grep -q $conda_env_name
+    then
+    echo "conda environment $conda_env_name detected, skipping env creation..."
+    echo "Updating dependencies: $dependencies"
+    conda install $dependencies
+else
+    echo "Creating conda environment and installing dependencies..."
+    echo "Installing dependencies for $conda_env_name..."
+    echo "Dependencies requested: $dependencies"
+    conda create -q -n $conda_env_name $dependencies || true
+    echo "Conda environment $conda_env_name created..."
+fi
+
 echo "Activating $conda_env_name environment..."
 source activate $conda_env_name
-
 
 # Install unittest dependencies
 #conda install nose coverage mock

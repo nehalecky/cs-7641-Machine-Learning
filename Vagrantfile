@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-ipythonPort = 8009                 # Ipython port to forward (also set in IPython notebook config)
+ipythonPort = 8009  # Ipython port to forward (also set in IPython notebook config)
 
 Vagrant.configure(2) do |config|
   config.ssh.insert_key = true
@@ -24,12 +24,17 @@ Vagrant.configure(2) do |config|
     # argument is a set of non-required options.
 
     master.vm.synced_folder "./assignments", "/home/vagrant/assignments"
+    master.vm.synced_folder "./bin", "/home/vagrant/bin"
+
 
     # Enable provisioning with a shell script. Additional provisioners such as
     # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
     # documentation for more information about their specific syntax and use.
 
-    master.vm.provision :shell, path: "./bootstrap.sh", privileged: false
+    master.vm.provision :shell, path: "./bin/bootstrap.sh", privileged: false
+    #master.vm.provision :shell, :inline => "./bin/launch-jupyter.sh", run: "always"
+
+
 
 
     master.vm.provider :virtualbox do |vb|
