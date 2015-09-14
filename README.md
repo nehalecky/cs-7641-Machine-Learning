@@ -14,7 +14,7 @@ from [GATech OMSCS](http://www.omscs.gatech.edu/)
 - [1.2 SL: Regression and Classification](https://stackedit.io/viewer#!url=https://raw.githubusercontent.com/nehalecky/CS7641-Machine-Learning/master/notes/1.2_sl_2_-_regression_and_classification.md)
 - [1.3 SL: Neural Networks](https://stackedit.io/viewer#!url=https://raw.githubusercontent.com/nehalecky/CS7641-Machine-Learning/master/notes/1.3_sl_3_-_neural_networks.md)
 - [1.4 SL: Instance-Based Learning](https://stackedit.io/viewer#!url=https://raw.githubusercontent.com/nehalecky/CS7641-Machine-Learning/master/notes/1.4_sl_4_-_instance_base_learning.md)
-
+- [1.5 SL: Ensemble Learning: Bagging and Boosting](https://stackedit.io/viewer#!url=https://raw.githubusercontent.com/nehalecky/CS7641-Machine-Learning/master/notes/1.5_sl_5_-_ensemble_learning_boosting.md)
 
 
 ## Assignments 
