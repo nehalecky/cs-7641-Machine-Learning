@@ -1,6 +1,6 @@
 # CS 7641: Machine Learning
 
-from [GATech OMSCS](http://www.omscs.gatech.edu/) 
+from [GATech OMSCS](http://www.omscs.gatech.edu/)
 
 ## Notes
 
@@ -15,12 +15,13 @@ from [GATech OMSCS](http://www.omscs.gatech.edu/)
 - [1.3 SL: Neural Networks](https://stackedit.io/viewer#!url=https://raw.githubusercontent.com/nehalecky/CS7641-Machine-Learning/master/notes/1.3_sl_3_-_neural_networks.md)
 - [1.4 SL: Instance-Based Learning](https://stackedit.io/viewer#!url=https://raw.githubusercontent.com/nehalecky/CS7641-Machine-Learning/master/notes/1.4_sl_4_-_instance_base_learning.md)
 - [1.5 SL: Ensemble Learning: Bagging and Boosting](https://stackedit.io/viewer#!url=https://raw.githubusercontent.com/nehalecky/CS7641-Machine-Learning/master/notes/1.5_sl_5_-_ensemble_learning_boosting.md)
+- [1.6 SL: Kernel Methods and SVMs](https://stackedit.io/viewer#!url=https://raw.githubusercontent.com/nehalecky/CS7641-Machine-Learning/master/notes/1.6_sl_6_-_kernel_methods_and_svm.md)
 
 
-## Assignments 
+## Assignments
 
 - use IPython / Jupyter notebook.
-- virtual machine definition can generate all content. 
+- virtual machine definition can generate all content.
 
 ## Virtual Machine (VM)
 
@@ -34,4 +35,4 @@ All analysis contained in this repo can be reproduced with use of the VM. First,
 ```
 Then navigate to the Jupyter session at: http://localhost:8009/
 
-Godspeed! 
+Godspeed!
